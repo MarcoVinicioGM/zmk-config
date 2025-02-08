@@ -17,6 +17,7 @@
             quick-tap-ms = <150>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <30 31 32 33 34 35 36 37 38 39 40 41>;
         };
 
@@ -28,6 +29,7 @@
             quick-tap-ms = <150>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11>;
         };
 
@@ -60,6 +62,7 @@
         };
 
         // Programming-specific tap dances
+
         td_semi: tap_dance_semi {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -128,21 +131,21 @@
 
         default_layer {
             bindings = <
-&td_esc    &kp N1  &kp N2        &kp N3       &kp N4    &kp N5                            &kp N6   &kp N7        &kp N8       &kp N9   &kp N0    &td_arrow
-&td_tab    &kp Q   &kp W         &kp E        &kp R     &kp T                             &kp Y    &kp U         &kp I        &kp O    &kp P     &kp EQUAL
-&kp LSHFT  &kp A   &mhl LCTRL S  &mhl LALT D  &kp F     &kp G                             &kp H    &mhr RCTRL J  &mhr RALT K  &kp L    &td_semi  &kp SQT
-&kp LCTRL  &kp Z   &kp X         &kp C        &kp V     &kp B      &kp LBKT     &kp RBKT  &kp N    &kp M         &kp COMMA    &kp DOT  &kp FSLH  &kp BSLH
-                                 &kp LGUI     &kp LALT  &kp ENTER  &kp SPACE    &td_bspc  &kp DEL  &kp LC(BSPC)  &mo 1
+&td_esc    &kp N1  &kp N2        &kp N3       &kp N4    &kp N5                                                    &kp N6   &kp N7        &kp N8       &kp N9   &kp N0    &td_arrow
+&td_tab    &kp Q   &kp W         &kp E        &kp R     &kp T                                                     &kp Y    &kp U         &kp I        &kp O    &kp P     &kp EQUAL
+&kp LSHFT  &kp A   &mhl LCTRL S  &mhl LALT D  &kp F     &kp G                                                     &kp H    &mhr RCTRL J  &mhr RALT K  &kp L    &td_semi  &kp SQT
+&kp LCTRL  &kp Z   &kp X         &kp C        &kp V     &kp B      &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp N    &kp M         &kp COMMA    &kp DOT  &kp FSLH  &kp BSLH
+                                 &kp LGUI     &kp LALT  &kp ENTER  &kp SPACE               &td_bspc               &kp DEL  &kp LC(BSPC)  &mo 1
             >;
         };
 
         sym_layer {
             bindings = <
-&kp F1     &kp F2     &kp F3     &kp F4     &kp F5    &kp F6                       &kp F7     &kp F8     &kp F9     &kp F10   &kp F11    &kp F12
-&td_grave  &kp EXCL   &kp AT     &kp HASH   &kp DLLR  &kp PRCNT                    &kp CARET  &kp AMPS   &kp STAR   &td_par   &kp RPAR   &kp PLUS
-&trans     &kp GRAVE  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT                     &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &kp COLON  &kp DQT
-&trans     &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V) &kp GT     &td_lbrc  &trans  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END   &kp QMARK  &kp PIPE
-                                 &trans     &trans    &trans     &trans    &trans  &trans     &trans     &trans
+&kp F1     &kp F2     &kp F3     &kp F4     &kp F5     &kp F6                         &kp F7     &kp F8     &kp F9     &kp F10    &kp F11    &kp F12
+&td_grave  &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT                      &kp CARET  &kp AMPS   &kp STAR   &td_par    &kp RPAR   &kp PLUS
+&trans     &kp GRAVE  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT                       &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp COLON  &kp DQT
+&trans     &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp GT     &td_lbrc    &trans  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp QMARK  &kp PIPE
+                                 &trans     &trans     &trans     &trans      &trans  &trans     &trans     &trans
             >;
         };
     };
