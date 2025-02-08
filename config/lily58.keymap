@@ -59,22 +59,33 @@
             bindings = <&kp ESC>, <&kp LA(F4)>;
         };
 
+        // Programming-specific tap dances
         td_semi: tap_dance_semi {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp SEMI>, <&macro_cs_func>;
         };
-    };
 
-    combos {
-        compatible = "zmk,combos";
-        
-        combo_gaming {
-            timeout-ms = <50>;
-            key-positions = <42 43>;
-            bindings = <&tog 2>;
-            layers = <0 2>;
+        td_lbrc: tap_dance_lbrace {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LBRC>, <&macro_block>;
+        };
+
+        td_par: tap_dance_paren {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LPAR>, <&macro_parens>;
+        };
+
+        td_arrow: tap_dance_arrow {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp MINUS>, <&macro_arrow>;
         };
     };
 
@@ -84,7 +95,31 @@
             #binding-cells = <0>;
             wait-ms = <30>;
             tap-ms = <40>;
-            bindings = <&kp SEMI &kp RET &kp LBRC &kp RET &kp RBRC>;
+            bindings = <&kp SEMI &kp RET &kp LBRC &kp RET &kp RBRC &kp UP &kp TAB>;
+        };
+
+        macro_block: code_block {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LBRC &kp RET &kp RET &kp RBRC &kp UP &kp TAB>;
+        };
+
+        macro_parens: parentheses {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT>;
+        };
+
+        macro_arrow: arrow_function {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp MINUS &kp GT &kp SPACE>;
         };
     };
 
@@ -93,7 +128,7 @@
 
         default_layer {
             bindings = <
-&td_esc    &kp N1  &kp N2        &kp N3       &kp N4    &kp N5                            &kp N6   &kp N7        &kp N8       &kp N9   &kp N0    &kp MINUS
+&td_esc    &kp N1  &kp N2        &kp N3       &kp N4    &kp N5                            &kp N6   &kp N7        &kp N8       &kp N9   &kp N0    &td_arrow
 &td_tab    &kp Q   &kp W         &kp E        &kp R     &kp T                             &kp Y    &kp U         &kp I        &kp O    &kp P     &kp EQUAL
 &kp LSHFT  &kp A   &mhl LCTRL S  &mhl LALT D  &kp F     &kp G                             &kp H    &mhr RCTRL J  &mhr RALT K  &kp L    &td_semi  &kp SQT
 &kp LCTRL  &kp Z   &kp X         &kp C        &kp V     &kp B      &kp LBKT     &kp RBKT  &kp N    &kp M         &kp COMMA    &kp DOT  &kp FSLH  &kp BSLH
@@ -104,30 +139,10 @@
         sym_layer {
             bindings = <
 &kp F1     &kp F2     &kp F3     &kp F4     &kp F5    &kp F6                       &kp F7     &kp F8     &kp F9     &kp F10   &kp F11    &kp F12
-&td_grave  &kp EXCL   &kp AT     &kp HASH   &kp DLLR  &kp PRCNT                    &kp CARET  &kp AMPS   &kp STAR   &kp LPAR  &kp RPAR   &kp PLUS
+&td_grave  &kp EXCL   &kp AT     &kp HASH   &kp DLLR  &kp PRCNT                    &kp CARET  &kp AMPS   &kp STAR   &td_par   &kp RPAR   &kp PLUS
 &trans     &kp GRAVE  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT                     &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &kp COLON  &kp DQT
-&trans     &none      &none      &none      &kp LT    &kp GT     &trans    &trans  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END   &kp QMARK  &kp BSLH
+&trans     &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V) &kp GT     &td_lbrc  &trans  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END   &kp QMARK  &kp PIPE
                                  &trans     &trans    &trans     &trans    &trans  &trans     &trans     &trans
-            >;
-        };
-
-        gaming_layer {
-            bindings = <
-&kp ESC    &kp N1     &kp N2  &kp N3    &kp N4  &kp N5                             &kp N6    &kp N7   &kp N8    &kp N9     &kp N0   &kp MINUS
-&kp TAB    &kp GRAVE  &kp Q   &kp W     &kp E   &kp R                              &kp T     &kp Y    &kp U     &kp I      &kp O    &kp P
-&kp LSHFT  &kp LSHFT  &kp A   &kp S     &kp D   &kp F                              &kp G     &kp H    &kp J     &kp K      &kp L    &kp SEMI
-&kp LCTRL  &kp LCTRL  &kp Z   &kp X     &kp C   &kp V      &kp G        &trans     &kp B     &kp N    &kp M     &kp COMMA  &kp DOT  &kp FSLH
-                              &kp LALT  &mo 3   &kp SPACE  &kp SPACE    &kp ENTER  &kp BSPC  &kp DEL  &kp LGUI
-            >;
-        };
-
-        sub_gaming_layer {
-            bindings = <
-&kp ESC    &kp N6  &kp N7  &kp N8    &kp N9     &kp N0                          &trans  &trans  &trans  &trans  &trans  &trans
-&kp TAB    &kp T   &kp Y   &kp U     &kp I      &kp O                           &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHFT  &kp H   &kp J   &kp K     &kp L      &kp SEMI                        &trans  &trans  &trans  &trans  &trans  &trans
-&kp LCTRL  &kp B   &kp N   &kp M     &kp COMMA  &kp DOT    &kp P        &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                           &kp LALT  &trans     &kp SPACE  &kp ENTER    &trans  &trans  &trans  &trans
             >;
         };
     };
