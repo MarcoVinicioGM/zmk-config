@@ -17,7 +17,6 @@
             quick-tap-ms = <150>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
-
             hold-trigger-key-positions = <30 31 32 33 34 35 36 37 38 39 40 41>;
         };
 
@@ -29,7 +28,6 @@
             quick-tap-ms = <150>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
-
             hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11>;
         };
 
@@ -69,6 +67,17 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+        
+        combo_gaming {
+            timeout-ms = <50>;
+            key-positions = <42 43>;
+            bindings = <&tog 2>;
+            layers = <0 2>;
+        };
+    };
+
     macros {
         macro_cs_func: cs_function {
             compatible = "zmk,behavior-macro";
@@ -88,37 +97,17 @@
 &td_tab    &kp Q   &kp W         &kp E        &kp R     &kp T                             &kp Y    &kp U         &kp I        &kp O    &kp P     &kp EQUAL
 &kp LSHFT  &kp A   &mhl LCTRL S  &mhl LALT D  &kp F     &kp G                             &kp H    &mhr RCTRL J  &mhr RALT K  &kp L    &td_semi  &kp SQT
 &kp LCTRL  &kp Z   &kp X         &kp C        &kp V     &kp B      &kp LBKT     &kp RBKT  &kp N    &kp M         &kp COMMA    &kp DOT  &kp FSLH  &kp BSLH
-                                 &kp LGUI     &kp LALT  &kp ENTER  &kp SPACE    &td_bspc  &kp DEL  &mo 1         &mo 2
-            >;
-        };
-
-        nav_layer {
-            bindings = <
-&trans  &kp LC(E)  &kp LC(T)  &kp LC(W)    &none      &none                            &none   &none     &kp UP    &none      &none      &none
-&none   &none      &none      &none        &none      &none                            &none   &kp HOME  &kp UP    &kp END    &kp PG_UP  &none
-&trans  &kp LALT   &kp LCTRL  &kp LSHFT    &none      &none                            &none   &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &none
-&trans  &kp LC(Z)  &kp LC(Y)  &kp LA(TAB)  &kp LC(S)  &kp LA(SPACE)  &trans    &trans  &none   &none     &mo 3     &none      &none      &none
-                              &trans       &trans     &trans         &trans    &trans  &trans  &trans    &trans
+                                 &kp LGUI     &kp LALT  &kp ENTER  &kp SPACE    &td_bspc  &kp DEL  &kp LC(BSPC)  &mo 1
             >;
         };
 
         sym_layer {
             bindings = <
-&kp F1     &kp F2     &kp F3     &kp F4     &kp F5    &kp F6                       &kp F7     &kp F8     &kp F9    &kp F10   &kp F11    &kp F12
-&td_grave  &kp EXCL   &kp AT     &kp HASH   &kp DLLR  &kp PRCNT                    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR   &kp PLUS
-&trans     &kp GRAVE  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT                     &kp LBRC   &kp RBRC   &kp LPAR  &kp RPAR  &kp COLON  &kp DQT
-&trans     &none      &none      &none      &kp LT    &kp GT     &trans    &trans  &kp PIPE   &kp UNDER  &kp LT    &kp GT    &kp QMARK  &kp BSLH
+&kp F1     &kp F2     &kp F3     &kp F4     &kp F5    &kp F6                       &kp F7     &kp F8     &kp F9     &kp F10   &kp F11    &kp F12
+&td_grave  &kp EXCL   &kp AT     &kp HASH   &kp DLLR  &kp PRCNT                    &kp CARET  &kp AMPS   &kp STAR   &kp LPAR  &kp RPAR   &kp PLUS
+&trans     &kp GRAVE  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT                     &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &kp COLON  &kp DQT
+&trans     &none      &none      &none      &kp LT    &kp GT     &trans    &trans  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END   &kp QMARK  &kp BSLH
                                  &trans     &trans    &trans     &trans    &trans  &trans     &trans     &trans
-            >;
-        };
-
-        win_layer {
-            bindings = <
-&none  &none  &none             &kp LG(TAB)  &kp LG(D)          &kp LG(HOME)                         &none   &none     &kp LC(LA(UP))  &none      &none  &none
-&none  &none  &none             &none        &none              &none                                &none   &none     &kp UP          &none      &none  &none
-&none  &none  &kp LC(LG(LEFT))  &none        &kp LC(LG(RIGHT))  &none                                &none   &kp LEFT  &kp DOWN        &kp RIGHT  &none  &none
-&none  &none  &none             &none        &kp LG(LS(LEFT))   &kp LG(LS(RIGHT))  &none     &none   &none   &none     &trans          &none      &none  &none
-                                &trans       &trans             &trans             &trans    &trans  &trans  &trans    &trans
             >;
         };
 
@@ -128,7 +117,7 @@
 &kp TAB    &kp GRAVE  &kp Q   &kp W     &kp E   &kp R                              &kp T     &kp Y    &kp U     &kp I      &kp O    &kp P
 &kp LSHFT  &kp LSHFT  &kp A   &kp S     &kp D   &kp F                              &kp G     &kp H    &kp J     &kp K      &kp L    &kp SEMI
 &kp LCTRL  &kp LCTRL  &kp Z   &kp X     &kp C   &kp V      &kp G        &trans     &kp B     &kp N    &kp M     &kp COMMA  &kp DOT  &kp FSLH
-                              &kp LALT  &mo 5   &kp SPACE  &kp SPACE    &kp ENTER  &kp BSPC  &kp DEL  &kp LGUI
+                              &kp LALT  &mo 3   &kp SPACE  &kp SPACE    &kp ENTER  &kp BSPC  &kp DEL  &kp LGUI
             >;
         };
 
