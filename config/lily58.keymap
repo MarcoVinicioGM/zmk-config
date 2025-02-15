@@ -12,11 +12,11 @@
 
 / {
     behaviors {
-        // For pinky, ring, and middle fingers (GUI, ALT, CTRL)
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
+            bindings = <&kp &kp>;
             flavor = "tap-preferred";
             tapping-term-ms = <270>;
             quick-tap-ms = <300>;
@@ -24,12 +24,12 @@
             hold-trigger-key-positions = <RIGHT_HAND_KEYS>;
             hold-trigger-on-release;
         };
-
-        // For index fingers (SHIFT)
+    
         hm_shift: homerow_mods_shift {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_SHIFT";
             #binding-cells = <2>;
+            bindings = <&kp &kp>;
             flavor = "tap-preferred";
             tapping-term-ms = <270>;
             quick-tap-ms = <300>;
