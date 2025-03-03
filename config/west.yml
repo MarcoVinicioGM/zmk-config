@@ -2,18 +2,15 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: zzeneg # <-- new entry
-      url-base: https://github.com/zzeneg
+    - name: englmaxi
+      url-base: https://github.com/englmaxi
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-nice-view-hid # <-- new entry
-      remote: zzeneg
-      revision: main
-    - name: zmk-raw-hid # <-- new entry
-      remote: zzeneg
+    - name: zmk-dongle-display
+      remote: englmaxi
       revision: main
   self:
     path: config
